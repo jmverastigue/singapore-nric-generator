@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Tricentis.Automation.AutomationInstructions.TestActions;
+using Tricentis.Automation.Creation;
 using Tricentis.Automation.Engines;
 using Tricentis.Automation.Engines.Representations;
 using Tricentis.Automation.Engines.SpecialExecutionTasks;
@@ -43,12 +44,9 @@ namespace AutomationExtensions
             HandleActualValue(testAction, output, strOutput);
         }
 
-        static string GenerateNRIC()
+        static string GenerateNRIC(char prefix)
         {
-            // NRIC Prefix based on different age groups
-            char[] prefixes = { 'S', 'T', 'F', 'G' };
             Random rand = new Random();
-            char prefix = prefixes[rand.Next(prefixes.Length)];
 
             // Generate a random 7-digit number
             int nricNumber = rand.Next(1000000, 9999999);
